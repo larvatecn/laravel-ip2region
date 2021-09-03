@@ -58,7 +58,7 @@ class Ip2RegionManager
      * @return array|null
      * @throws Exception
      */
-    public function find($ip)
+    public function find($ip): ?array
     {
         if ($this->defaultSearch == 'memory') {
             return $this->memorySearch($ip);
@@ -79,7 +79,7 @@ class Ip2RegionManager
      * @return array|null
      * @throws Exception
      */
-    public function memorySearch($ip)
+    public function memorySearch($ip): ?array
     {
         //check and load the binary string for the first time
         if ($this->dbBinStr == null) {
@@ -130,7 +130,7 @@ class Ip2RegionManager
      * @return array|null Array or NULL for any error
      * @throws Exception
      */
-    public function binarySearch($ip)
+    public function binarySearch($ip): ?array
     {
         //check and conver the ip address
         if (is_string($ip)) $ip = self::safeIp2long($ip);
@@ -191,7 +191,7 @@ class Ip2RegionManager
      * @return array|null Array for NULL for any error
      * @throws Exception
      */
-    public function btreeSearch($ip)
+    public function btreeSearch($ip): ?array
     {
         if (is_string($ip)) $ip = self::safeIp2long($ip);
         //check and load the header
