@@ -177,10 +177,10 @@ class Ip2RegionManager
         $dataPtr = ($dataPtr & 0x00FFFFFF);
         fseek($this->dbFileHandler, $dataPtr);
         $data = fread($this->dbFileHandler, $dataLen);
-        return array(
+        return [
             'city_id' => self::getLong($data, 0),
             'region' => substr($data, 4),
-        );
+        ];
     }
 
     /**
@@ -309,6 +309,11 @@ class Ip2RegionManager
             'city_id' => self::getLong($data, 0),
             'region' => substr($data, 4),
         ];
+    }
+
+    private static function getAddress($region)
+    {
+
     }
 
     /**
